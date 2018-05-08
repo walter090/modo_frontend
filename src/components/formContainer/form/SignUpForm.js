@@ -7,21 +7,22 @@ class SignUpForm extends React.Component {
         super(props);
         this.state = {
             email: '',
-            emailError: false,
-            emailMessage: '',
-
             username: '',
-            usernameError: false,
-            usernameMessage: '',
-
             password: '',
-            passwordError: false,
-            passwordMessage: '',
-
             passwordConfirmation: '',
-
             firstName: '',
-            lastName: ''
+            lastName: '',
+
+            erroneous: {
+                email: false,
+                username: false,
+                password: false
+            },
+            errorMessage: {
+                email: '',
+                username: '',
+                password: ''
+            }
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -45,8 +46,8 @@ class SignUpForm extends React.Component {
                     type='email'
                     value={this.state.email}
                     onChange={this.handleChange}
-                    erroneous={this.state.emailError}
-                    message={this.state.emailMessage}
+                    erroneous={this.state.erroneous.email}
+                    message={this.state.errorMessage.email}
                 />
                 <FormInput
                     label='Username'
@@ -54,8 +55,8 @@ class SignUpForm extends React.Component {
                     type='text'
                     value={this.state.username}
                     onChange={this.handleChange}
-                    erroneous={this.state.usernameError}
-                    message={this.state.usernameMessage}
+                    erroneous={this.state.erroneous.username}
+                    message={this.state.errorMessage.username}
                 />
                 <FormInput
                     label='First name'
@@ -76,22 +77,13 @@ class SignUpForm extends React.Component {
                     message=''
                 />
                 <FormInput
-                    label='Username'
-                    name='username'
-                    type='text'
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                    erroneous={this.state.usernameError}
-                    message={this.state.usernameMessage}
-                />
-                <FormInput
                     label='Password'
                     name='password'
                     type='password'
                     value={this.state.password}
                     onChange={this.handleChange}
-                    erroneous={this.state.passwordError}
-                    message={this.state.passwordMessage}
+                    erroneous={this.state.erroneous.password}
+                    message={this.state.errorMessage.password}
                 />
                 <FormInput
                     label='Confirm password'
@@ -100,7 +92,7 @@ class SignUpForm extends React.Component {
                     value={this.state.passwordConfirmation}
                     onChange={this.handleChange}
                     erroneous={false}
-                    message={this.state.passwordMessage}
+                    message=''
                 />
             </form>
         );
