@@ -8,9 +8,12 @@ class ValidationError extends React.Component {
             return null;
         }
 
-        return (
-            <span>{this.props.message}</span>
+        const messageList = this.props.message;
+        const messageItems = messageList.map((message, index) =>
+            <li key={index}>{message}</li>
         );
+
+        return <ul className='gen-err' id={this.props.id}>{messageItems}</ul>;
     }
 }
 
@@ -18,5 +21,7 @@ export default ValidationError;
 
 ValidationError.propTypes = {
     erroneous: PropTypes.bool,
-    message: PropTypes.string
+    message: PropTypes.array,
+    className: PropTypes.string,
+    id: PropTypes.string
 };
