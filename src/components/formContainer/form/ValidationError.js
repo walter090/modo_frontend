@@ -9,8 +9,8 @@ class ValidationError extends React.Component {
         }
 
         const messageList = this.props.message;
-        const messageItems = messageList.map((message, index) =>
-            <li key={index}>{message}</li>
+        const messageItems = messageList.map((message) =>
+            <li key={message}>{message}</li>
         );
 
         return <ul className='gen-err' id={this.props.id}>{messageItems}</ul>;
