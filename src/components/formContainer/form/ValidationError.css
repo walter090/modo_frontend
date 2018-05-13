@@ -1,0 +1,13 @@
+.gen-err {
+    list-style: none;
+    color: red;
+    font-size: 12px;
+
+    margin: 2px 2px;
+    padding: 0;
+    position: absolute;
+}
+
+.gen-err li {
+    margin-top: 2px;
+}
