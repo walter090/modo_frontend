@@ -19,7 +19,26 @@
     cursor: pointer;
 }
 
-.gen-btn:hover {
+.gen-btn svg {
+    margin-right: 5px;
+    animation: spin 1s infinite ease-in-out;
+    display: none;
+}
+
+.gen-btn:hover, .loading {
     background-color: #444444;
     color: white;
+}
+
+.loading svg {
+    display: inline;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

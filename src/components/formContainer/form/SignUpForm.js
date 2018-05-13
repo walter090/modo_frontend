@@ -41,6 +41,8 @@ class SignUpForm extends React.Component {
                 erroneous: false,
                 message: []
             },
+
+            loading: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -65,6 +67,8 @@ class SignUpForm extends React.Component {
     validateSubmission(e) {
         // Validate form fields on form submission before api call.
         e.preventDefault();
+
+        this.setState({loading: true});
 
         let goodForSubmit = true;
 
@@ -103,6 +107,8 @@ class SignUpForm extends React.Component {
 
         if (goodForSubmit) {
             this.handleSubmission();
+        } else {
+            this.setState({loading: false});
         }
     }
 
@@ -125,6 +131,7 @@ class SignUpForm extends React.Component {
             .then(res => res.json())
             .then(
                 (response) => {
+                    this.setState({loading: false});
                     if (response.hasOwnProperty('errors')) {
                         const errors = response.errors;
                         for (let field in errors) {
@@ -211,7 +218,9 @@ class SignUpForm extends React.Component {
                     message={this.state.password.message}
                     id='password'
                 />
-                <GenericButton text='Sign up' onClick={this.validateSubmission}/>
+                <GenericButton text={this.state.loading ? 'Signing up' : 'Sign up'}
+                               loading={this.state.loading}
+                               onClick={this.validateSubmission}/>
             </form>
         );
     }
