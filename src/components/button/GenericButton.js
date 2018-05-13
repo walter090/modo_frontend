@@ -9,7 +9,7 @@ class GenericButton extends React.Component {
 
         return (
             <button onClick={this.props.onClick}
-                    className={'gen-btn ' + (additionalClass ? '': additionalClass)}
+                    className={'gen-btn ' + (additionalClass ? additionalClass: '')}
                     id={this.props.id}>
                 {this.props.text}
                 </button>
