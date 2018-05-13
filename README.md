@@ -19,7 +19,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Displaying Lint Output in the Editor](#displaying-lint-output-in-the-editor)
 - [Debugging in the Editor](#debugging-in-the-editor)
 - [Formatting Code Automatically](#formatting-code-automatically)
-- [Changing the Page `<title>`](#changing-the-page-title)
+- [Changing the SignUpPage `<title>`](#changing-the-page-title)
 - [Installing a Dependency](#installing-a-dependency)
 - [Importing a Component](#importing-a-component)
 - [Code Splitting](#code-splitting)
@@ -52,7 +52,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Using HTTPS in Development](#using-https-in-development)
 - [Generating Dynamic `<meta>` Tags on the Server](#generating-dynamic-meta-tags-on-the-server)
 - [Pre-Rendering into Static HTML Files](#pre-rendering-into-static-html-files)
-- [Injecting Data from the Server into the Page](#injecting-data-from-the-server-into-the-page)
+- [Injecting Data from the Server into the SignUpPage](#injecting-data-from-the-server-into-the-page)
 - [Running Tests](#running-tests)
   - [Filename Conventions](#filename-conventions)
   - [Command Line Interface](#command-line-interface)
@@ -352,7 +352,7 @@ Now, whenever you make a commit, Prettier will format the changed files automati
 
 Next you might want to integrate Prettier in your favorite editor. Read the section on [Editor Integration](https://prettier.io/docs/en/editors.html) on the Prettier GitHub page.
 
-## Changing the Page `<title>`
+## Changing the SignUpPage `<title>`
 
 You can find the source HTML file in the `public` folder of the generated project. You may edit the `<title>` tag in it to change the title from “React App” to anything else.
 
@@ -1249,7 +1249,7 @@ The primary benefit of pre-rendering is that you get the core content of each pa
 
 You can read more about [zero-configuration pre-rendering (also called snapshotting) here](https://medium.com/superhighfives/an-almost-static-stack-6df0a2791319).
 
-## Injecting Data from the Server into the Page
+## Injecting Data from the Server into the SignUpPage
 
 Similarly to the previous section, you can leave some placeholders in the HTML that inject global variables, for example:
 
