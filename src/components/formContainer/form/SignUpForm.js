@@ -160,7 +160,7 @@ class SignUpForm extends React.Component {
 
     render() {
         return (
-            <form className='gen-form'>
+            <form className='gen-form' id='signup-form'>
                 <FormInput
                     label='Email'
                     name='email'
