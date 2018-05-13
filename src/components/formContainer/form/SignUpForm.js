@@ -12,24 +12,35 @@ class SignUpForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            username: '',
-            password: '',
-            firstName: '',
-            lastName: '',
+            email: {
+                value: '',
+                erroneous: false,
+                message: []
+            },
 
-            emailError: {
+            username: {
+                value: '',
                 erroneous: false,
                 message: []
             },
-            usernameError: {
+
+            password: {
+                value: '',
                 erroneous: false,
                 message: []
             },
-            passwordError: {
+
+            firstName: {
+                value: '',
                 erroneous: false,
                 message: []
-            }
+            },
+
+            lastName: {
+                value: '',
+                erroneous: false,
+                message: []
+            },
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -42,7 +53,13 @@ class SignUpForm extends React.Component {
         const name = event.target.name;
         const value = event.target.value;
 
-        this.setState({[name]: value});
+        this.setState({
+            [name]: {
+                value: value,
+                erroneous: false,
+                message: []
+            }
+        });
     }
 
     validateSubmission(e) {
@@ -51,35 +68,38 @@ class SignUpForm extends React.Component {
 
         let goodForSubmit = true;
 
-        const emailValidation = validate.emailValidate(this.state.email);
+        const emailValidation = validate.emailValidate(this.state.email.value);
         goodForSubmit = goodForSubmit && emailValidation.valid;
 
-        this.setState({
-            emailError: {
+        this.setState(prev => ({
+            email: {
+                value: prev.email.value,
                 erroneous: !emailValidation.valid,
                 message: [emailValidation.message]
             }
-        });
+        }));
 
-        const passwordValidation = validate.passwordValidate(this.state.password);
+        const passwordValidation = validate.passwordValidate(this.state.password.value);
         goodForSubmit = goodForSubmit && passwordValidation.valid;
 
-        this.setState({
-            passwordError: {
+        this.setState(prev => ({
+            password: {
+                value: prev.password.value,
                 erroneous: !passwordValidation.valid,
                 message: [passwordValidation.message]
             }
-        });
+        }));
 
-        const usernameValidation = validate.usernameValidate(this.state.username);
+        const usernameValidation = validate.usernameValidate(this.state.username.value);
         goodForSubmit = goodForSubmit && usernameValidation.valid;
 
-        this.setState({
-            usernameError: {
-                erroneous: !passwordValidation.valid,
+        this.setState(prev => ({
+            username: {
+                value: prev.username.value,
+                erroneous: !usernameValidation.valid,
                 message: [usernameValidation.message]
             }
-        });
+        }));
 
         if (goodForSubmit) {
             this.handleSubmission();
@@ -95,9 +115,9 @@ class SignUpForm extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: this.state.email,
-                username: this.state.username,
-                password: this.state.password
+                email: this.state.email.value,
+                username: this.state.username.value,
+                password: this.state.password.value
             })
         };
 
@@ -109,12 +129,14 @@ class SignUpForm extends React.Component {
                         const errors = response.errors;
                         for (let field in errors) {
                             if (errors.hasOwnProperty(field)) {
-                                this.setState({
-                                    [field + 'Error']: {
+                                console.log(errors[field]);
+                                this.setState(prev => ({
+                                    [field]: {
+                                        value: prev[field].value,
                                         erroneous: true,
                                         message: errors[field]
                                     }
-                                });
+                                }));
                             }
                         }
                     } else {
@@ -143,46 +165,51 @@ class SignUpForm extends React.Component {
                     label='Email'
                     name='email'
                     type='email'
-                    value={this.state.email}
+                    value={this.state.email.value}
                     onChange={this.handleChange}
-                    erroneous={this.state.emailError.erroneous}
-                    message={this.state.emailError.message}
+                    erroneous={this.state.email.erroneous}
+                    message={this.state.email.message}
+                    id='email'
                 />
                 <FormInput
                     label='Username'
                     name='username'
                     type='text'
-                    value={this.state.username}
+                    value={this.state.username.value}
                     onChange={this.handleChange}
-                    erroneous={this.state.usernameError.erroneous}
-                    message={this.state.usernameError.message}
+                    erroneous={this.state.username.erroneous}
+                    message={this.state.username.message}
+                    id='username'
                 />
                 <FormInput
                     label='First name'
                     name='firstName'
                     type='text'
-                    value={this.state.firstName}
+                    value={this.state.firstName.value}
                     onChange={this.handleChange}
                     erroneous={false}
                     message={[]}
+                    id='firstName'
                 />
                 <FormInput
                     label='Last name'
                     name='lastName'
                     type='text'
-                    value={this.state.lastName}
+                    value={this.state.lastName.value}
                     onChange={this.handleChange}
                     erroneous={false}
                     message={[]}
+                    id='lastName'
                 />
                 <FormInput
                     label='Password'
                     name='password'
                     type='password'
-                    value={this.state.password}
+                    value={this.state.password.value}
                     onChange={this.handleChange}
-                    erroneous={this.state.passwordError.erroneous}
-                    message={this.state.passwordError.message}
+                    erroneous={this.state.password.erroneous}
+                    message={this.state.password.message}
+                    id='password'
                 />
                 <GenericButton text='Sign up' onClick={this.validateSubmission}/>
             </form>
