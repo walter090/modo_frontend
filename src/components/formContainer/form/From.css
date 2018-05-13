@@ -1,0 +1,12 @@
+.gen-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px;
+}
+
+.gen-form input {
+    width: 300px;
+}
