@@ -6,10 +6,6 @@ import faCircleNotch from '@fortawesome/fontawesome-free-solid/faCircleNotch'
 import './Button.css'
 
 class GenericButton extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const additionalClass = this.props.className;
         const loading = this.props.loading;
