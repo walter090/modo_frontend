@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400');
+
+.form-input {
+    position: relative;
+    display: flex;
+    flex-flow: column-reverse;
+
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+}
+
+.input-label {
+    padding: 3px 3px;
+    position: absolute;
+    transition: ease-in-out 0.2s;
+    cursor: text;
+}
+
+.input-wrap {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+
+    margin: 20px 15px 50px;
+}
+
+.input-input {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    outline: 0;
+    padding: 3px 3px;
+    width: 250px;
+
+    border: none;
+    border-bottom: 1.5px solid #999999;
+
+    transition: ease-in-out 0.2s;
+}
+
+.input-input:focus {
+    border-color: #777777;
+}
+
+.input-input:focus + .input-label,
+.input-input:not([value='']) + .input-label {
+    transform: translateY(-120%);
+    font-size: 12px;
+    opacity: 0.75;
+}
+
+.input-error {
+    border-bottom-color: red;
+}
+
+.input-error:focus {
+    border-bottom-color: red;
+}
