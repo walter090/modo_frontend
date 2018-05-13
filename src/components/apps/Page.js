@@ -4,7 +4,9 @@ import SignUpForm from '../formContainer/form/SignUpForm';
 class Page extends React.Component {
     render() {
         return (
-            <SignUpForm/>
+            <div className='form-wrapper'>
+                <SignUpForm/>
+            </div>
         );
     }
 }
