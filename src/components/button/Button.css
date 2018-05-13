@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500');
+
+.gen-btn {
+    margin: 10px 15px;
+    padding: 5px 20px;
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 15px;
+    color: #444444;
+
+    background-color: transparent;
+    border-radius: 19px;
+    border: 2px solid #444444;
+    outline: 0;
+
+    transition: ease-in-out 0.2s;
+
+    cursor: pointer;
+}
+
+.gen-btn:hover {
+    background-color: #444444;
+    color: white;
+}
