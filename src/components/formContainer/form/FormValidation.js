@@ -8,7 +8,7 @@ export function emailValidate(email) {
 }
 
 export function passwordValidate(password) {
-    if (password === '') {
+    if (password === '' || password === undefined) {
         return {
             valid: false,
             message: 'Password is required.'
@@ -28,7 +28,7 @@ export function passwordStrength(password) {
 
 export function usernameValidate(username) {
     return {
-        valid: username !== '',
+        valid: username !== '' || username === undefined,
         message: 'Username is required.'
     }
 }
