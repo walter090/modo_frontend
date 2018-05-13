@@ -15,17 +15,25 @@ class FormInput extends React.Component {
         const message = this.props.message;
         const erroneous = this.props.erroneous;
 
+        const additionalClass = this.props.className;
+
         return (
-            <label className='form-input' id={id}>
-                {label}
-                <input
-                    name={name}
-                    value={value}
-                    type={type}
-                    onChange={this.props.onChange}
-                />
+            <div className='input-wrap'>
+                <div className={'form-input ' + (additionalClass ? additionalClass : '')}>
+                    <input
+                        id={id}
+                        name={name}
+                        value={value}
+                        type={type}
+                        className={'input-input ' + (erroneous ? 'input-error' : '')}
+                        onChange={this.props.onChange}
+                    />
+                    <label className={'input-label'} htmlFor={id}>
+                        {label}
+                    </label>
+                </div>
                 <ValidationError erroneous={erroneous} message={message}/>
-            </label>
+            </div>
         );
     }
 }
