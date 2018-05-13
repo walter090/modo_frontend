@@ -152,6 +152,7 @@ class SignUpForm extends React.Component {
                 }
             )
             .catch((error) => {
+                this.setState({loading: false});
                 console.log(error);
                 this.pushNotification('An error occurred, please try again later.')
             });
