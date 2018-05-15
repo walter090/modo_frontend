@@ -94,7 +94,7 @@ class SignInForm extends React.Component {
 
         fetch(callAPI('/auth/token/'), request)
             .then(res => {
-                if(res.status === 401) {
+                if (res.status === 401) {
                     this.setState(prev => ({
                         password: {
                             value: prev.password.value,
@@ -129,6 +129,13 @@ class SignInForm extends React.Component {
                         }
                     } else {
                         const cookies = new Cookies();
+
+                        Date.prototype.addDays = function (days) {
+                            let dat = new Date();
+                            dat.setDate(dat.getDate() + days);
+                            return dat;
+                        };
+
                         cookies.set(
                             'accessToken',
                             response['access_token'],
@@ -138,12 +145,20 @@ class SignInForm extends React.Component {
                             }
                         );
                         cookies.set(
+                            'accessTokenExpires',
+                            new Date().addDays(1)
+                        );
+                        cookies.set(
                             'refreshToken',
                             response['refresh_token'],
                             {
                                 // Expires in 1 week.
                                 maxAge: 604800
                             }
+                        );
+                        cookies.set(
+                            'refreshTokenExpires',
+                            new Date().addDays(7)
                         );
 
                         this.pushNotification('You are signed in.');
@@ -153,7 +168,7 @@ class SignInForm extends React.Component {
             .catch((error) => {
                 this.setState({loading: false});
                 console.log(error);
-                this.pushNotification('An error occurred, please try again later.')
+                this.pushNotification('An error occurred, please try again later.');
             });
     }
 
@@ -166,7 +181,7 @@ class SignInForm extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <form className='signin-form'>
                 <FormInput
                     label='Email'
