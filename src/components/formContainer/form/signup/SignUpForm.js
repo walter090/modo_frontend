@@ -132,7 +132,7 @@ class SignUpForm extends React.Component {
             .then(
                 (response) => {
                     this.setState({loading: false});
-                    if (response.hasOwnProperty('errors')) {
+                    if (response.hasOwnProperty('errors') || response.hasOwnProperty('error')) {
                         const errors = response.errors;
                         for (let field in errors) {
                             if (errors.hasOwnProperty(field)) {
@@ -141,7 +141,7 @@ class SignUpForm extends React.Component {
                                     [field]: {
                                         value: prev[field].value,
                                         erroneous: true,
-                                        message: errors[field]
+                                        message: prev[field].message
                                     }
                                 }));
                             }
@@ -230,9 +230,5 @@ class SignUpForm extends React.Component {
 export default SignUpForm;
 
 SignUpForm.propTypes = {
-    email: PropTypes.string,
-    username: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
     configNotification: PropTypes.func
 };
