@@ -1,7 +1,7 @@
 import React from 'react';
 
 import GenericNotification from '../notification/GenericNotification';
-import SignUpForm from '../formContainer/form/SignUpForm';
+import SignUpForm from '../formContainer/form/signin/SignInForm';
 
 class SignUpPage extends React.Component {
     constructor(props) {
