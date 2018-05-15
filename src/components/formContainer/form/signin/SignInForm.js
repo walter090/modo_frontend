@@ -146,8 +146,6 @@ class SignInForm extends React.Component {
                         );
 
                         this.pushNotification('You are signed in.');
-
-                        console.log(cookies.getAll());
                     }
                 }
             )
