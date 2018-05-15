@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DjangoCSRFToken from 'django-react-csrftoken'
 
 import validate from '../FormValidation';
 import FormInput from '../FormInput';
@@ -169,6 +170,7 @@ class SignUpForm extends React.Component {
     render() {
         return (
             <form className='gen-form' id='signup-form'>
+                <DjangoCSRFToken/>
                 <FormInput
                     label='Email'
                     name='email'
