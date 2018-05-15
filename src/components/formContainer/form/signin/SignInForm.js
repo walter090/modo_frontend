@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Cookies from 'universal-cookie';
 
 import FormInput from '../FormInput';
-import FormVlidation from '../FormValidation';
-import ValidationError from '../ValidationError';
+import FormValidation from '../FormValidation';
 import GenericButton from '../../../button/GenericButton';
+import callAPI from "../../../../api-config";
 
 class SignInForm extends React.Component {
     constructor(props) {
@@ -42,6 +43,127 @@ class SignInForm extends React.Component {
 
     validateSubmission(e) {
         e.preventDefault();
+
+        this.setState({loading: true});
+
+        let goodForSubmit = true;
+
+        const emailValidation = FormValidation.emailValidate(this.state.email.value);
+        goodForSubmit = goodForSubmit && emailValidation.valid;
+
+        this.setState(prev => ({
+            email: {
+                value: prev.email.value,
+                erroneous: !emailValidation.valid,
+                message: [emailValidation.message]
+            }
+        }));
+
+        const passwordValidation = FormValidation.passwordFilled(this.state.password.value);
+        goodForSubmit = goodForSubmit && passwordValidation.valid;
+
+        this.setState(prev => ({
+            password: {
+                value: prev.password.value,
+                erroneous: !passwordValidation.valid,
+                message: [passwordValidation.message]
+            }
+        }));
+
+        if (goodForSubmit) {
+            this.handleSubmission();
+        } else {
+            this.setState({loading: false});
+        }
+    }
+
+    handleSubmission() {
+        const request = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: this.state.email.value,
+                password: this.state.password.value,
+                client_id: 'GqksfoPENlvKRtMhXcNLdwcqCbQkWjHyOPk66xfn',
+                grant_type: 'password'
+            })
+        };
+
+        fetch(callAPI('/auth/token/'), request)
+            .then(res => {
+                if(res.status === 401) {
+                    this.setState(prev => ({
+                        password: {
+                            value: prev.password.value,
+                            erroneous: true,
+                            message: ['Email or password is not correct.']
+                        },
+                        email: {
+                            value: prev.email.value,
+                            erroneous: true,
+                            message: []
+                        }
+                    }));
+                }
+                return res.json();
+            })
+            .then(
+                (response) => {
+                    this.setState({loading: false});
+                    if (response.hasOwnProperty('errors') || response.hasOwnProperty('error')) {
+                        const errors = response.errors;
+                        for (let field in errors) {
+                            if (errors.hasOwnProperty(field)) {
+                                console.log(errors[field]);
+                                this.setState(prev => ({
+                                    [field]: {
+                                        value: prev[field].value,
+                                        erroneous: true,
+                                        message: prev[field].message
+                                    }
+                                }));
+                            }
+                        }
+                    } else {
+                        const cookies = new Cookies();
+                        cookies.set(
+                            'accessToken',
+                            response['access_token'],
+                            {
+                                // Expires in 1 day.
+                                maxAge: 86400
+                            }
+                        );
+                        cookies.set(
+                            'refreshToken',
+                            response['refresh_token'],
+                            {
+                                // Expires in 1 week.
+                                maxAge: 604800
+                            }
+                        );
+
+                        this.pushNotification('You are signed in.');
+
+                        console.log(cookies.getAll());
+                    }
+                }
+            )
+            .catch((error) => {
+                this.setState({loading: false});
+                console.log(error);
+                this.pushNotification('An error occurred, please try again later.')
+            });
+    }
+
+    pushNotification(value) {
+        // When a notify worthy action is performed, this function triggers
+        // the notification component in parent component.
+        if (this.props.configNotification) {
+            this.props.configNotification(value);
+        }
     }
 
     render() {
@@ -77,4 +199,6 @@ class SignInForm extends React.Component {
 
 export default SignInForm;
 
-SignInForm.propTypes = {};
+SignInForm.propTypes = {
+    configNotification: PropTypes.func
+};
