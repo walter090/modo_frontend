@@ -18,6 +18,13 @@ export function passwordValidate(password) {
     }
 }
 
+export function passwordFilled(password) {
+    return {
+        valid: !(password === '' || password === undefined),
+        message: 'Password is required.'
+    };
+}
+
 export function passwordStrength(password) {
     const valid = password.length >= 8;
     return {
@@ -33,4 +40,4 @@ export function usernameValidate(username) {
     }
 }
 
-export default {emailValidate, passwordValidate, usernameValidate};
+export default {emailValidate, passwordValidate, usernameValidate, passwordFilled};
