@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import validate from './FormValidation'
-import FormInput from './FormInput';
-import './From.css'
-import GenericButton from "../../button/GenericButton";
+import validate from '../FormValidation';
+import FormInput from '../FormInput';
+import './SignUpFrom.css'
+import GenericButton from '../../../button/GenericButton';
 
-import callAPI from '../../../api-config'
+import callAPI from '../../../../api-config'
 
 class SignUpForm extends React.Component {
     constructor(props) {
