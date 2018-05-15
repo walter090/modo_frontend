@@ -8,11 +8,9 @@ class GenericNotification extends React.Component {
         super(props);
         this.state = {
             notification: [],
-            timeouts: []
         };
 
         this.expire = this.expire.bind(this);
-        this.tick = this.tick.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -21,11 +19,11 @@ class GenericNotification extends React.Component {
             notification: prev.notification
                 .concat([notificationList[notificationList.length - 1]])
         }));
+        this.timeouts.push(setTimeout(this.expire, 3000));
     }
 
     componentDidMount() {
-        this.tick();
-        this.interval = setInterval(this.tick, 3000);
+        this.timeouts = []
     }
 
     componentWillUnmount() {
@@ -39,10 +37,6 @@ class GenericNotification extends React.Component {
                 notification: prev.notification.slice(1)
             }));
         }
-    }
-
-    tick() {
-        this.state.timeouts.push(setTimeout(this.expire(), 3000));
     }
 
     render() {
