@@ -6,6 +6,7 @@ import FormInput from '../FormInput';
 import FormValidation from '../FormValidation';
 import GenericButton from '../../../button/GenericButton';
 import callAPI from "../../../../api-config";
+import './SignInFrom.css'
 
 class SignInForm extends React.Component {
     constructor(props) {
