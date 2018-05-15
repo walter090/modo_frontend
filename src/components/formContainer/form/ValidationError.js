@@ -24,7 +24,7 @@ export default ValidationError;
 
 ValidationError.propTypes = {
     erroneous: PropTypes.bool,
-    message: PropTypes.array,
+    message: PropTypes.arrayOf(PropTypes.string),
     className: PropTypes.string,
     id: PropTypes.string
 };
