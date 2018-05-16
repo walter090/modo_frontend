@@ -5,7 +5,7 @@ import DjangoCSRFToken from 'django-react-csrftoken'
 import validate from '../FormValidation';
 import FormInput from '../FormInput';
 import './SignUpFrom.css'
-import GenericButton from '../../../button/GenericButton';
+import GenericButton from '../../../clickable/GenericButton';
 
 import callAPI from '../../../../api-config'
 

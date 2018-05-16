@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 
 import FormInput from '../FormInput';
 import FormValidation from '../FormValidation';
-import GenericButton from '../../../button/GenericButton';
+import GenericButton from '../../../clickable/GenericButton';
 import callAPI from "../../../../api-config";
 import './SignInFrom.css'
 
@@ -160,7 +160,6 @@ class SignInForm extends React.Component {
                             'refreshTokenExpires',
                             new Date().addDays(7)
                         );
-
                         this.pushNotification('You are signed in.');
                     }
                 }
