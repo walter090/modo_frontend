@@ -27,8 +27,7 @@ class GenericNotification extends React.Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this.interval);
-        this.state.timeouts.forEach(clearTimeout);
+        this.timeouts.forEach(clearTimeout);
     }
 
     expire() {
