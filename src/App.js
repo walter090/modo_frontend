@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import './App.css';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-import SignUpPage from './components/apps/SignUpPage';
+import './App.css';
+import SignInPage from './components/apps/SignInPage';
+import SignUpPage from "./components/apps/SignUpPage";
+import './components/clickable/Link.css';
 
 class App extends Component {
     constructor(props) {
@@ -11,6 +14,17 @@ class App extends Component {
         };
 
         this.configNotification = this.configNotification.bind(this);
+
+        this.PAGES = {
+            '/': () => <SignInPage
+                notifications={this.state.notifications}
+                configNotification={this.configNotification}
+            />,
+            '/sign-up/': () => <SignUpPage
+                notifications={this.state.notifications}
+                configNotification={this.configNotification}
+            />
+        };
     }
 
     configNotification(value) {
@@ -21,9 +35,12 @@ class App extends Component {
 
     render() {
         return (
-            <SignUpPage notifications={this.state.notifications}
-                        configNotification={this.configNotification}
-            />
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path='/' component={this.PAGES['/']}/>
+                    <Route path='/sign-up/' component={this.PAGES['/sign-up/']}/>
+                </Switch>
+            </BrowserRouter>
         );
     }
 }
