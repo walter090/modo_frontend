@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie';
 import FormInput from '../FormInput';
 import FormValidation from '../FormValidation';
 import GenericButton from '../../../clickable/GenericButton';
+import {Link} from 'react-router-dom';
 import callAPI from "../../../../api-config";
 import './SignInFrom.css'
 
@@ -202,9 +203,11 @@ class SignInForm extends React.Component {
                     message={this.state.password.message}
                     onChange={this.handleInputChange}
                 />
-                <GenericButton text={this.state.loading ? 'Signing up' : 'Sign up'}
+                <GenericButton text={this.state.loading ? 'Signing in' : 'Sign in'}
                                loading={this.state.loading}
                                onClick={this.validateSubmission}/>
+
+                <Link className='signin-link' to='/sign-up/'>New here? Sign up</Link>
             </form>
         );
     }

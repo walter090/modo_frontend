@@ -10,3 +10,7 @@
 .signin-form input {
     width: 300px;
 }
+
+.signin-link {
+    font-size: 80%;
+}
