@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DjangoCSRFToken from 'django-react-csrftoken'
+import {Link} from 'react-router-dom';
 
 import validate from '../FormValidation';
 import FormInput from '../FormInput';
@@ -224,6 +225,7 @@ class SignUpForm extends React.Component {
                 <GenericButton text={this.state.loading ? 'Signing up' : 'Sign up'}
                                loading={this.state.loading}
                                onClick={this.validateSubmission}/>
+                <Link className='signup-link' to='/sign-up/'>Sign in</Link>
             </form>
         );
     }
