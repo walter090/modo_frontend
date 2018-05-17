@@ -3,7 +3,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import './App.css';
 import SignInPage from './components/apps/SignInPage';
-import SignUpPage from "./components/apps/SignUpPage";
+import SignUpPage from './components/apps/SignUpPage';
 import './components/clickable/Link.css';
 
 class App extends Component {
