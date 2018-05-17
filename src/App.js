@@ -16,7 +16,7 @@ class App extends Component {
         this.configNotification = this.configNotification.bind(this);
 
         this.PAGES = {
-            '/': () => <SignInPage
+            '/sign-in/': () => <SignInPage
                 notifications={this.state.notifications}
                 configNotification={this.configNotification}
             />,
@@ -37,7 +37,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/' component={this.PAGES['/']}/>
+                    <Route exact path='/sign-in/' component={this.PAGES['/sign-in/']}/>
                     <Route path='/sign-up/' component={this.PAGES['/sign-up/']}/>
                 </Switch>
             </BrowserRouter>
