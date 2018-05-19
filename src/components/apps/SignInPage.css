@@ -1,0 +1,14 @@
+#root {
+    height: inherit;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.sign-in-wrapper form {
+    margin-top: 50%;
+}
+
+html, body {
+    height: 100%;
+}

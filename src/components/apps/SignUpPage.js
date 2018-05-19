@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 
 import GenericNotification from '../notification/GenericNotification';
 import SignUpForm from '../formContainer/form/signup/SignUpForm';
+import './SignUpPage.css';
 
 class SignUpPage extends React.Component {
     render() {
         return (
-            <div className='form-wrapper'>
+            <div className='sign-up-wrapper'>
                 <GenericNotification notification={this.props.notifications}/>
                 <SignUpForm configNotification={this.props.configNotification}/>
             </div>
