@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 import GenericNotification from '../notification/GenericNotification';
 import SignInForm from '../formContainer/form/signin/SignInForm'
 import SignUpPage from "./SignUpPage";
-import PropTypes from "prop-types";
 
 class SignInPage extends React.Component {
     render() {
