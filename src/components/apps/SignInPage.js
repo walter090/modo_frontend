@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 
 import GenericNotification from '../notification/GenericNotification';
 import SignInForm from '../formContainer/form/signin/SignInForm'
-import SignUpPage from "./SignUpPage";
+import './SignInPage.css';
 
 class SignInPage extends React.Component {
     render() {
         return (
-            <div className='form-wrapper'>
+            <div className='sign-in-wrapper'>
                 <GenericNotification notification={this.props.notifications}/>
                 <SignInForm configNotification={this.props.configNotification}/>
             </div>
@@ -18,7 +18,7 @@ class SignInPage extends React.Component {
 
 export default SignInPage;
 
-SignUpPage.propTypes = {
+SignInPage.propTypes = {
     notifications: PropTypes.array,
     configNotification: PropTypes.func
 };
