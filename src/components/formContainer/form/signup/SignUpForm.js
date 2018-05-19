@@ -225,7 +225,7 @@ class SignUpForm extends React.Component {
                 <GenericButton text={this.state.loading ? 'Signing up' : 'Sign up'}
                                loading={this.state.loading}
                                onClick={this.validateSubmission}/>
-                <Link className='signup-link' to='/sign-up/'>Sign in</Link>
+                <Link className='signup-link' to='/sign-in/'>Sign in</Link>
             </form>
         );
     }
