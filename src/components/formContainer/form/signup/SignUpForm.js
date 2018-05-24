@@ -8,7 +8,7 @@ import FormInput from '../FormInput';
 import './SignUpFrom.css'
 import GenericButton from '../../../clickable/GenericButton';
 
-import callAPI from '../../../../api-config'
+import callAPI from '../../../../util/api-config'
 
 class SignUpForm extends React.Component {
     constructor(props) {

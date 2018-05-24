@@ -6,7 +6,7 @@ import FormInput from '../FormInput';
 import FormValidation from '../FormValidation';
 import GenericButton from '../../../clickable/GenericButton';
 import {Link} from 'react-router-dom';
-import callAPI from "../../../../api-config";
+import callAPI from "../../../../util/api-config";
 import './SignInFrom.css'
 
 class SignInForm extends React.Component {
