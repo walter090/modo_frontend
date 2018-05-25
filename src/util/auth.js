@@ -3,12 +3,8 @@ import callAPI from './api-config'
 
 const CLIENT_ID = 'GqksfoPENlvKRtMhXcNLdwcqCbQkWjHyOPk66xfn';
 
-export function refreshAuthToken() {
+function refreshAuthToken() {
     const cookies = new Cookies();
-    
-    if (cookies['accessTokenExpires'] === undefined) {
-        return;
-    }
 
     if (cookies['accessTokenExpires'] - new Date() < 600000) {
         // If access token expires in less than 10 minutes, refresh access token.
@@ -60,9 +56,30 @@ export function refreshAuthToken() {
                         'refreshTokenExpires',
                         new Date().addDays(7)
                     );
+                    cookies.set(
+                        'tokenType',
+                        response['token_type']
+                    )
                 }
             });
     }
 }
 
-export default {refreshAuthToken};
+export function confirmAuthentication() {
+    const cookies = new Cookies();
+    const headers = {'Content-Type': 'application/json'};
+
+    const now = new Date();
+    const refreshable = (cookies['accessTokenExpires'] - now < 600000)
+        && (cookies['refreshTokenExpires'] - now > 60000)
+        && (cookies['accessTokenExpires'] !== undefined);
+
+    if (refreshable) {
+        refreshAuthToken();
+        headers['Authorization'] = cookies['tokenType'] + ' ' + cookies['accessToken'];
+    }
+
+    return headers;
+}
+
+export default {confirmAuthentication};
