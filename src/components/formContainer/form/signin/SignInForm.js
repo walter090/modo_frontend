@@ -161,6 +161,10 @@ class SignInForm extends React.Component {
                             'refreshTokenExpires',
                             new Date().addDays(7)
                         );
+                        cookies.set(
+                            'tokenType',
+                            response['token_type']
+                        );
                         this.pushNotification('You are signed in.');
                     }
                 }
