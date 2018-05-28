@@ -18,7 +18,7 @@ class Card extends React.Component {
                 </a>
                 <div className='card-desc'>
                     <p>{this.props.description}</p>
-                    <span className='source'>{this.props.site}</span>
+                    <a className='source' href={this.props.sourceLink}>{this.props.site}</a>
                 </div>
             </div>
         );
@@ -34,4 +34,5 @@ Card.propTypes = {
     description: PropTypes.string,
     site: PropTypes.string,
     articleLink: PropTypes.string,
+    sourceLink: PropTypes.string,
 };
