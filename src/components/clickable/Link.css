@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400');
-
 a {
     text-decoration: inherit;
-    font-family: "Roboto Mono", monospace;
-    color: black;
+    font-family: "Open Sans", sans-serif;
+    color: #999999;
 
-    border-bottom: 1.4px dotted black;
+    transition: ease-in-out 0.2s;
 }
 
 a:hover {
-    border-bottom-style: solid;
+    color: #666666;
 }
