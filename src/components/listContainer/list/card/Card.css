@@ -90,7 +90,7 @@
     z-index: -1;
     position: absolute;
 
-    filter: blur(5px) brightness(0.75);
+    filter: blur(5px) brightness(0.7);
     object-fit: cover;
     object-position: 100% 100%;
 }
