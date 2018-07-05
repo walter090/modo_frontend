@@ -25,25 +25,32 @@ class Card extends React.Component {
 
     render() {
         const additionalClass = this.props.additionalClass;
+        const articleLink = this.props.articleLink;
+        const imageSource = this.props.imageSource;
+        const cardTitle = this.props.cardTitle;
+        const sourceLink = this.props.sourceLink;
+        const site = this.props.site;
+        const description = this.props.description;
+
         return (
             <div className={'card ' + (additionalClass ? additionalClass : '')}
                  onMouseEnter={this.pullDesc}
                  onMouseLeave={this.hideDesc}>
                 <div className='card-heading'>
-                    <a href={this.props.articleLink}>
-                        <img src={this.props.imageSource} alt={this.props.cardTitle}/>
+                    <a href={articleLink}>
+                        <img src={imageSource} alt={cardTitle}/>
                     </a>
                     <div className='title-block'>
                         <img className='glass'
-                             src={this.props.imageSource}
-                             alt={this.props.cardTitle}/>
-                        <a className='source' href={this.props.sourceLink}>{this.props.site}</a>
-                        <a className='title-link' href={this.props.articleLink}>{this.props.cardTitle}</a>
+                             src={imageSource}
+                             alt={cardTitle}/>
+                        <a className='source' href={sourceLink}>{site}</a>
+                        <a className='title-link' href={articleLink}>{cardTitle}</a>
                         <AnimateHeight duration={300}
                                        easing='ease'
                                        height={this.state.height}
                                        animateOpacity={true}>
-                            <p>{this.props.description}</p>
+                            <p>{description}</p>
                         </AnimateHeight>
                     </div>
                 </div>
