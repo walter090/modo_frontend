@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Card from 'card/Card'
-import FrostedGlassFilter from 'card/FrostedGlassFilter'
+import Card from 'card/Card';
+import FrostedGlassFilter from 'card/FrostedGlassFilter';
 
 class NewsList extends React{
     render() {
