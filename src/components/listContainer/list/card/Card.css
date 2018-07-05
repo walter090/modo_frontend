@@ -13,12 +13,13 @@
     transition: ease-in-out 0.2s;
 }
 
-.card:hover {
-    box-shadow: 1px 1px 100px #999999;
-}
-
 .card-heading {
     position: relative;
+    border-radius: 10px;
+}
+
+.card-heading a {
+    border-radius: 10px;
 }
 
 .card-heading img {
@@ -26,11 +27,9 @@
     width: 100%;
     height: 100%;
     border-width: 0;
+    cursor: pointer;
 
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
-    filter: brightness(0.75);
+    border-radius: 10px;
 }
 
 .title-block {
@@ -38,35 +37,60 @@
     margin: 0;
     bottom: 0;
     width: 100%;
-    height: inherit;
+    max-height: 100%;
+    z-index: 1;
 
-    mix-blend-mode: lighten;
-    background-color: white;
+    border-radius: 10px;
+    color: whitesmoke;
+    overflow: hidden;
 
     transition: ease-in-out 0.2s;
 }
 
-.title-block h1 {
-    margin: 0;
-    padding: 10px 5px;
+.title-link {
+    display: block;
+    padding: 10px 15px;
+    margin-top: 20px;
 
-    color: black;
     font-family: 'Didact Gothic', sans-serif;
     font-size: 26px;
-
-    transition: ease-in-out 0.2s;
-}
-
-.card-desc {
-    padding: 0 10px 10px;
-    color: #444444;
-
-    transition: ease-in-out 0.2s;
-}
-
-.card-desc a {
+    font-weight: bold;
+    color: whitesmoke;
     cursor: pointer;
+
+    transition: ease-in-out 0.2s;
+}
+
+.title-block p {
+    display: block;
+    color: whitesmoke;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: ease 0.5s;
+}
+
+.source {
     float: right;
-    padding-right: 10px;
-    padding-bottom: 10px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+    cursor: pointer;
+    color: antiquewhite;
+    font-size: 12px;
+    transition: ease 0.2s;
+}
+
+.title-block a:hover {
+    color: lightgrey;
+}
+
+.glass {
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    position: absolute;
+
+    filter: blur(5px) brightness(0.75);
+    object-fit: cover;
+    object-position: 100% 100%;
 }
