@@ -1,24 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AnimateHeight from 'react-animate-height';
 
 import './Card.css';
 
 class Card extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            height: 0
+        };
+
+        this.pullDesc = this.pullDesc.bind(this);
+        this.hideDesc = this.hideDesc.bind(this);
+    }
+
+    pullDesc() {
+        this.setState({height: 'auto'});
+    }
+
+    hideDesc() {
+        this.setState({height: 0});
+    }
+
     render() {
         const additionalClass = this.props.additionalClass;
         return (
-            <div className={'card ' + (additionalClass ? additionalClass : '')}>
-                <a href={this.props.articleLink}>
-                    <div className='card-heading'>
+            <div className={'card ' + (additionalClass ? additionalClass : '')}
+                 onMouseEnter={this.pullDesc}
+                 onMouseLeave={this.hideDesc}>
+                <div className='card-heading'>
+                    <a href={this.props.articleLink}>
                         <img src={this.props.imageSource} alt={this.props.cardTitle}/>
-                        <div className='title-block'>
-                            <h1>{this.props.cardTitle}</h1>
-                        </div>
+                    </a>
+                    <div className='title-block'>
+                        <img className='glass'
+                             src={this.props.imageSource}
+                             alt={this.props.cardTitle}/>
+                        <a className='source' href={this.props.sourceLink}>{this.props.site}</a>
+                        <a className='title-link' href={this.props.articleLink}>{this.props.cardTitle}</a>
+                        <AnimateHeight duration={300}
+                                       easing='ease'
+                                       height={this.state.height}
+                                       animateOpacity={true}>
+                            <p>{this.props.description}</p>
+                        </AnimateHeight>
                     </div>
-                </a>
-                <div className='card-desc'>
-                    <p>{this.props.description}</p>
-                    <a className='source' href={this.props.sourceLink}>{this.props.site}</a>
                 </div>
             </div>
         );
