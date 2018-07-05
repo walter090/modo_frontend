@@ -1,6 +1,7 @@
 import React from 'react';
 
-import callAPI from '../../util/api-config'
+import NewsList from 'list/NewsList';
+import callAPI from '../../util/api-config';
 
 class NewsListContainer extends React.Component {
     constructor(props) {
@@ -27,6 +28,12 @@ class NewsListContainer extends React.Component {
                     news: response['results']
                 })
             })
+    }
+
+    render() {
+        return(
+            <NewsList news={this.state.news} next={this.state.next}/>
+        );
     }
 }
 
