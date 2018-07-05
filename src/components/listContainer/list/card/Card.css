@@ -76,12 +76,12 @@
 
     cursor: pointer;
     color: antiquewhite;
-    font-size: 12px;
+    font-size: 13px;
     transition: ease 0.2s;
 }
 
 .title-block a:hover {
-    color: lightgrey;
+    color: rgba(245, 245, 245, 0.75);
 }
 
 .glass {
