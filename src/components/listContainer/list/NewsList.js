@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Card from 'card/Card';
 import FrostedGlassFilter from 'card/FrostedGlassFilter';
 
-class NewsList extends React{
+class NewsList extends React.Component {
     render() {
         const news = this.props.news;
 
@@ -23,6 +23,8 @@ class NewsList extends React{
         );
     }
 }
+
+export default NewsList;
 
 NewsList.propTypes = {
     news: PropTypes.arrayOf(PropTypes.shape({
