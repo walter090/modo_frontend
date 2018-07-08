@@ -67,7 +67,6 @@ function refreshAuthToken() {
 
 export function confirmAuthentication() {
     const cookies = new Cookies();
-    const headers = {'Content-Type': 'application/json'};
 
     const now = new Date();
     const refreshable = (cookies['accessTokenExpires'] - now < 600000)
@@ -76,10 +75,10 @@ export function confirmAuthentication() {
 
     if (refreshable) {
         refreshAuthToken();
-        headers['Authorization'] = cookies['tokenType'] + ' ' + cookies['accessToken'];
+        return true
+    } else {
+        return false
     }
-
-    return headers;
 }
 
 export default {confirmAuthentication};
