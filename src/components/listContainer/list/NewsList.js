@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Card from 'card/Card';
-import FrostedGlassFilter from 'card/FrostedGlassFilter';
+import Card from './card/Card';
+import FrostedGlassFilter from './card/FrostedGlassFilter';
 
 class NewsList extends React.Component {
     render() {
         const news = this.props.news;
+        const next = this.props.next;
 
         return (
-            <div className='horizontal-list'>
+            <div className='news-list'>
                 {news.map(article =>
                     <Card cardTitle={article.title}
                           imageSource={article.images}
