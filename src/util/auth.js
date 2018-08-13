@@ -1,7 +1,6 @@
 import Cookies from 'universal-cookie';
-import callAPI from './api-config'
-
-const CLIENT_ID = 'GqksfoPENlvKRtMhXcNLdwcqCbQkWjHyOPk66xfn';
+import callAPI from './apiConfig'
+import {CLIENT_ID} from './configParams';
 
 function refreshAuthToken() {
     const cookies = new Cookies();
@@ -81,4 +80,4 @@ export function confirmAuthentication() {
     }
 }
 
-export default {confirmAuthentication};
+export default confirmAuthentication;
