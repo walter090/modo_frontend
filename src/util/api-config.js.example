@@ -1,6 +1,0 @@
-export function callAPI(action) {
-    const apiRoot = 'https://exampleapi.com';
-    return apiRoot + action;
-}
-
-export const CLIENT_ID = '';
