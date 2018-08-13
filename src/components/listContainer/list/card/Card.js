@@ -55,8 +55,7 @@ class Card extends React.Component {
                         <a className='title-link' href={articleLink}>{Card.strip(cardTitle)}</a>
                         <AnimateHeight duration={300}
                                        easing='ease'
-                                       height={this.state.height}
-                                       animateOpacity={true}>
+                                       height={this.state.height}>
                             <p>{description}</p>
                         </AnimateHeight>
                     </div>
