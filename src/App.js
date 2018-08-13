@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 import './App.css';
 import SignInPage from './components/apps/SignInPage';
 import SignUpPage from './components/apps/SignUpPage';
+import NewsListContainer from './components/listContainer/NewsListContainer';
 import './components/clickable/Link.css';
 
 class App extends Component {
@@ -35,12 +36,13 @@ class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path='/sign-in/' component={this.PAGES['/sign-in/']}/>
-                    <Route path='/sign-up/' component={this.PAGES['/sign-up/']}/>
-                </Switch>
-            </BrowserRouter>
+            <div className='app'>
+                <Route exact path='/' component={() =>
+                    <NewsListContainer/>
+                }/>
+                <Route path='/sign-in/' component={this.PAGES['/sign-in/']}/>
+                <Route path='/sign-up/' component={this.PAGES['/sign-up/']}/>
+            </div>
         );
     }
 }
