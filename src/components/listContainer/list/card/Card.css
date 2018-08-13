@@ -2,7 +2,7 @@
     display: inline-block;
     width: 30%;
     position: relative;
-    margin: 10px;
+    margin: 5px;
 
     border: solid transparent 0;
     border-radius: 10px;
@@ -16,12 +16,11 @@
 @media screen and (max-width: 1100px) {
     .card {
         width: 45%;
-        margin: 5px;
     }
 }
 
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
     .card {
         width: 100%;
     }
