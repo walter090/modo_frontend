@@ -1,17 +1,11 @@
 import React from 'react';
 
-import NewsList from 'list/NewsList';
-import callAPI from '../../util/api-config';
+import NewsList from './list/NewsList';
+import callAPI from '../../util/apiConfig';
+import {connect} from 'react-redux';
+import {pushNewsList, getNextCursor} from "../../actions";
 
 class NewsListContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            news: [],
-            next: ''
-        }
-    }
-
     componentDidMount() {
         const request = {
             method: 'GET',
@@ -20,21 +14,32 @@ class NewsListContainer extends React.Component {
             },
         };
 
-        fetch(callAPI(/news/), request)
+        fetch(callAPI('news'), request)
             .then(res => res.json())
             .then((response) => {
-                this.setState({
-                    next: response['next'],
-                    news: response['results']
-                })
+                this.props.pushNewsList(response['results']);
+                this.props.getNextCursor(response['next']);
             })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     render() {
         return(
-            <NewsList news={this.state.news} next={this.state.next}/>
+            <NewsList news={this.props.news} next={this.props.next}/>
         );
     }
 }
 
-export default NewsListContainer;
+const mapStateToProps = state => ({
+    news: state.newsList,
+    next: state.next
+});
+
+const mapDispatchToProps = dispatch => ({
+    pushNewsList: news => dispatch(pushNewsList(news)),
+    getNextCursor: next => dispatch(getNextCursor(next))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsListContainer);
