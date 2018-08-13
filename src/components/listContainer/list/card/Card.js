@@ -13,6 +13,7 @@ class Card extends React.Component {
 
         this.pullDesc = this.pullDesc.bind(this);
         this.hideDesc = this.hideDesc.bind(this);
+        Card.strip = Card.strip.bind(this);
     }
 
     pullDesc() {
@@ -21,6 +22,12 @@ class Card extends React.Component {
 
     hideDesc() {
         this.setState({height: 0});
+    }
+
+    static strip(html) {
+        let tmp = document.createElement("DIV");
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || "";
     }
 
     render() {
@@ -45,7 +52,7 @@ class Card extends React.Component {
                              src={imageSource}
                              alt={cardTitle}/>
                         <a className='source' href={sourceLink}>{site}</a>
-                        <a className='title-link' href={articleLink}>{cardTitle}</a>
+                        <a className='title-link' href={articleLink}>{Card.strip(cardTitle)}</a>
                         <AnimateHeight duration={300}
                                        easing='ease'
                                        height={this.state.height}
