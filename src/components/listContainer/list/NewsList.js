@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Card from './card/Card';
 import FrostedGlassFilter from './card/FrostedGlassFilter';
+import './NewsList.css';
 
 class NewsList extends React.Component {
     render() {
