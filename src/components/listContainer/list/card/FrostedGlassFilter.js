@@ -1,6 +1,6 @@
 import React from 'react'
 
-class FrostedGlassFilter extends React {
+class FrostedGlassFilter extends React.Component {
     render() {
         return (
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
